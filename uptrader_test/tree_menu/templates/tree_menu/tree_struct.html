@@ -1,0 +1,12 @@
+<li>
+    <a href="?section={{ section.link }}">{% if section.link == cur_section %} <b>{{ section.name }}</b> {% else %} {{ section.name }} {% endif %}</a>
+    {% if childes %}
+    <ul>
+        {% for sect, ch in childes.items %}
+        {% with section=sect childes=ch template_name="tree_menu/tree_struct.html" %}
+        {% include template_name %}
+        {% endwith %}
+        {% endfor %}
+    </ul>
+    {%endif%}
+</li>

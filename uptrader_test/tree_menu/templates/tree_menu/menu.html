@@ -1,1 +1,8 @@
 <h1>{{ name }}</h1>
+{% if menu %}
+<ul>
+{%for section, childes in menu.items %}
+    {% include 'tree_menu/tree_struct.html' %}
+{%endfor%}
+</ul>
+{% endif %}

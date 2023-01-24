@@ -14,12 +14,15 @@ class Menu(models.Model):
     )
     link = models.CharField(
         verbose_name='Ссылка на раздел меню',
-        max_length=250
+        max_length=250,
+        blank=True,
     )
     parent = models.ForeignKey(
         verbose_name='Родительский раздел',
         to='self',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
 
     class Meta:
@@ -28,7 +31,7 @@ class Menu(models.Model):
         ordering = ['name']
 
     def __str__(self):
-        return f'Menu: {self.name}'
+        return self.name
 
 
 class MenuCategories(models.Model):
@@ -49,4 +52,4 @@ class MenuCategories(models.Model):
         ordering = ['name']
 
     def __str__(self):
-        return f'Category: {self.name}'
+        return self.name
